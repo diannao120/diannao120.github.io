@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>艺术宣传-电脑120</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Content-Language" content="zh-cn">
+    <link rel="icon" href="/image/logo.png" >
+    <link rel="stylesheet" href="layui-v2.5.5/layui/css/layui.css">
+    <style>
+
+    </style>
+</head>
+
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <div class="layui-logo">艺术宣传</div>
+            <!-- 头部区域（可配合layui已有的水平导航） -->
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">ps学习</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="http://www.16xx8.com/photoshop/xinshoujiaocheng/rumen/">ps新手入门</a></dd>
+                        <dd><a href="https://www.psjia.com/show/">ps灵感池</a></dd>
+                        <dd><a href="https://588ku.com/">素材获取</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">pr学习</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="https://huke88.com/route/pr.html">pr新手入门</a></dd>
+                        <dd><a href="">pr教程</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">web前端开发</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="https://www.w3school.com.cn/html/html_basic.asp">html基础入门</a></dd>
+                        <dd><a href="">视频教学</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">其它</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">学习</a></dd>
+                        <dd><a href="">资源</a></dd>
+                        <dd><a href="">视频</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="layui-body" style="position: none;width: 100%; left:0px;">
+            <!-- 内容主体区域 -->
+            <div style="padding: 15px;">
+                <div class="layui-carousel" id="test1" style="width: 100%;margin: 0 auto;">
+                    <div carousel-item>
+                        
+                        <div style="text-align: center;"><img height="640px" width="100%" src="layui-v2.5.5/layui/images/img/6.JPG"></div>
+                        
+                        <div style="text-align: center;"><img height="640px" width="100%" src="layui-v2.5.5/layui/images/img/8.JPG"></div>
+                        
+                    </div>
+                </div>
+                <!-- 这是正文 -->
+                <div style="left: 60px;position: relative;width: 91%;top: 29px;">
+                    <!-- 条目中可以是任意内容，如：<img src=" "> -->
+                    <div class="layui-card ">
+                        <div class="layui-card ">
+                            <div class="layui-card-header "><h2>校园风采展</h2></div>
+                            <div class="layui-card-body ">
+                                <a href=" "><span class="layui-badge-dot layui-bg-black "></span>  电脑120荣获“最美大学生” </a></br>
+                                <a href=" "><span class="layui-badge-dot layui-bg-black "></span>  三下乡活动</a></br>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-card ">
+                        <div class="layui-card ">
+                            <div class="layui-card-header "><h2>推荐</h2></div>
+                            <div class="layui-card-body ">
+                                <a href="http://dy.163.com/v2/article/detail/E11447JQ05364H12.html "><span class="layui-badge-dot layui-bg-black "></span>  PR基础自学教程 premiere菜鸟篇 新手入门基础工具详解 </a></br>
+                                <a href="https://blog.csdn.net/zong596568821xp/article/details/83277729 "><span class="layui-badge-dot layui-bg-black "></span>  HTML零基础入门教程（详细）</a></br>
+                                <a href="https://www.psjia.com/pssc/fontxz/2018/1106/11057.html "><span class="layui-badge-dot layui-bg-black "></span>  7款站酷公益免费字体下载（可商用）</a><p>&nbsp;</p>
+								<p>&nbsp;</p>
+								<p align="center">&nbsp;</p>
+<p align="center">
+<span>电脑120服务群：</span>
+				<a href="http://shang.qq.com/wpa/qunwpa?idkey=6ba6d55616eaad2ba859efff4d9ffa2c7a73afe936f790a24b7a9bc9ccb74960" target="_blank" rel="noopener noreferrer">①群</a>
+				<span>  |  </span>
+				<a href="http://shang.qq.com/wpa/qunwpa?idkey=e42f5389280d1b46ff70e7e75058e0c202922891e7ecaafc30a4110a9869055f" target="_blank" rel="noopener noreferrer">②群</a>
+</p>
+<p align="center">Copyright © 2019 电脑120 版权所有</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <script src="layui-v2.5.5/layui/layui.js "></script>
+        <script>
+            //JavaScript代码区域
+            layui.use(['element', 'carousel'], function() {
+                var element = layui.element;
+
+                var carousel = layui.carousel;
+                //建造实例
+                carousel.render({
+                    elem: '#test1',
+                    width: '90%' //设置容器宽度
+                        ,
+                    arrow: 'always', //始终显示箭头
+                    height: '500px',
+                    index: 5,
+
+                });
+            });
+        </script>
+        
+        
+        <p align="center">&nbsp;</p>
+<p align="center">
+<span>电脑120服务群：</span>
+				<a href="http://shang.qq.com/wpa/qunwpa?idkey=6ba6d55616eaad2ba859efff4d9ffa2c7a73afe936f790a24b7a9bc9ccb74960" target="_blank" rel="noopener noreferrer">①群</a>
+				<span>  |  </span>
+				<a href="http://shang.qq.com/wpa/qunwpa?idkey=e42f5389280d1b46ff70e7e75058e0c202922891e7ecaafc30a4110a9869055f" target="_blank" rel="noopener noreferrer">②群</a>
+</p>
+
+</body>
+
+</html>
