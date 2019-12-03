@@ -1,0 +1,460 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="zh-cn">
+<title>百宝箱-电脑120</title>
+<link rel="icon" href="/image/logo.png" >
+<!--
+<style>
+
+div.WordSection1
+	{page:WordSection1;}
+ p.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	font-size:10.5pt;
+	font-family:"Calibri","sans-serif";
+	margin-left:0cm; margin-right:0cm; margin-top:0cm}
+
+</style>
+-->
+
+
+
+
+<style type="text/css">
+        .res
+        {
+            color: Red;
+        }
+        .result{
+            background: yellow;
+        }
+    </style>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var oldKey = "";
+        var index = -1;
+        var pos = new Array();//用于记录每个关键词的位置，以方便跳转
+        var oldCount = 0;//记录搜索到的所有关键词总数
+        
+        function previous(){
+            index--;
+            index = index < 0 ? oldCount - 1 : index;
+            search();
+        }
+        function next(){
+            index++;
+            //index = index == oldCount ? 0 : index;
+            if(index==oldCount){
+                index = 0 ;
+            }
+            search();
+        }
+ 
+        function search() {
+            $(".result").removeClass("res");//去除原本的res样式
+            var key = $("#key").val(); //取key值
+            if (!key) {
+                console.log("key为空则退出");
+                $(".result").each(function () {//恢复原始数据
+                    $(this).replaceWith($(this).html());
+                });
+                oldKey = "";
+                return; //key为空则退出
+            }
+            if (oldKey != key) {
+                console.log("进入重置方法");
+                //重置
+                index = 0;
+                $(".result").each(function () {
+                    $(this).replaceWith($(this).html());
+                });
+                pos = new Array();
+                var regExp = new RegExp(key+'(?!([^<]+)?>)', 'ig');//正则表达式匹配
+                $("body").html($("body").html().replace(regExp, "<span id='result" + index + "' class='result'>" + key + "</span>")); // 高亮操作
+                $("#key").val(key);
+                oldKey = key;
+                $(".result").each(function () {
+                    pos.push($(this).offset().top);
+                });
+                oldCount = $(".result").length;
+                console.log("oldCount值：",oldCount);
+            }
+ 
+            $(".result:eq(" + index + ")").addClass("res");//当前位置关键词改为红色字体
+ 
+            $("body").scrollTop(pos[index]);//跳转到指定位置
+        }
+    </script>
+    
+    
+    <!--回顶部-->
+    <style>
+.box{
+    position:fixed;
+    right:10px;
+    bottom: 10px;
+    height:30px;
+    width: 50px;    
+    text-align:center;
+    padding-top:20px;    
+    background-color: lightblue;
+    border-radius: 20%;
+    overflow: hidden;
+}
+.box:hover:before{
+    top:50%
+}
+.box:hover .box-in{
+    visibility: hidden;
+}
+.box:before{
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    content:'回到顶部';
+    width: 40px;
+    color:peru;
+    font-weight:bold;
+
+}    
+.box-in{
+    visibility: visible;
+    display:inline-block;
+    height:20px;
+    width: 20px;
+    border: 3px solid black;
+    border-color: white transparent transparent white;
+    transform:rotate(45deg);
+}
+</style>
+    
+    
+    
+</head>
+
+<body>
+
+<!--回顶部-->
+<div id="box" class="box">
+    <div class="box-in"></div>
+</div>    
+<script>
+var timer  = null;
+box.onclick = function(){
+    cancelAnimationFrame(timer);
+    //获取当前毫秒数
+    var startTime = +new Date();     
+    //获取当前页面的滚动高度
+    var b = document.body.scrollTop || document.documentElement.scrollTop;
+    var d = 500;
+    var c = b;
+    timer = requestAnimationFrame(function func(){
+        var t = d - Math.max(0,startTime - (+new Date()) + d);
+        document.documentElement.scrollTop = document.body.scrollTop = t * (-c) / d + b;
+        timer = requestAnimationFrame(func);
+        if(t == d){
+          cancelAnimationFrame(timer);
+        }
+    });
+}
+</script>
+
+
+<div class="WordSection1" style="layout-grid: 15.6pt">
+	<p class="MsoNormal" align="center" style="text-align: center">
+	<font face="华文中宋" size="7" color="#800080">百宝箱</font></p>
+	<p class="MsoNormal" align="center" style="text-align: center">
+	
+	    <div style="position: fixed; right: 20px; top: 0;">
+        <p align="center">
+        在百宝箱里快速搜索宝贝：<p align="center">
+        &nbsp;<input id="key" type="text" style="width: 100px;"/>
+        <input type="button" value="下一个" onclick="next()" />
+        <input type="button" value="上一个" onclick="previous()" />
+    </div>
+    <p align="center">
+	
+	<font size="6" face="华文中宋" color="#008000">
+	<a href="http://ms.henau.edu.cn/" target="_blank" style="text-decoration: none">
+	<font color="#008000">河南农业大学正版服务平台</font></a></font></p>
+	<p class="MsoNormal" align="center" style="text-align: center">
+	<font size="6" face="华文中宋" color="#008000">
+	<a href="http://www.diannao120.top/normal/install/" target="_blank" style="text-decoration: none">
+	<font color="#008000">备用软件安装板块（电脑学习）</font></a>|
+	<a href="index.files/wepe.htm" target="_blank" style="text-decoration: none">
+	<font color="#008000">常用装机软件下载（微PE）</font></a></font><p class="MsoNormal" align="center" style="text-align: center">
+	<font face="华文中宋" size="6" color="#008000">
+	<a href="https://www.lanzous.com/i7f86wd" target="_blank" style="text-decoration: none">
+	<font color="#008000">极速PDF</font></a> |
+	<a href="https://www.lanzous.com/i7f86xe" target="_blank" style="text-decoration: none">
+	<font color="#008000">360压缩</font></a> |
+	<a href="https://www.google.cn/intl/zh-CN/chrome/" target="_blank" style="text-decoration: none">
+	<font color="#008000">Chrome</font></a> |
+	<a href="https://www.lanzous.com/i7f8esh" target="_blank" style="text-decoration: none">
+	<font color="#008000">爱奇艺万能播放器</font></a></font><p class="MsoNormal" align="center" style="text-align: center">
+	<font face="华文中宋" size="6" color="#008000">
+	<a href="https://www.lanzous.com/b0dpj2z4j" target="_blank" style="text-decoration: none">
+	<font color="#008000">IDM</font></a>(</font><span style="color: #008000; font-family: Arial, 微软雅黑, 宋体, 新宋体, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none; background-color: rgb(208, 242, 195)">bwmn</span><font face="华文中宋" size="6" color="#008000">) 
+	| <a href="https://www.lanzous.com/i7f8oqf" target="_blank" style="text-decoration: none">
+	<font color="#008000">解除占用</font></a> |
+	<a href="https://www.lanzous.com/i7f8uza" target="_blank" style="text-decoration: none">
+	<font color="#008000">天若OCR</font></a> |
+	<a href="https://www.lanzous.com/i7f8p0f" target="_blank" style="text-decoration: none">
+	<font color="#008000">屏幕锁</font></a> |
+	<a href="https://www.lanzous.com/i7f8p1g" target="_blank" style="text-decoration: none">
+	<font color="#008000">软键盘</font></a></font><p class="MsoNormal" align="center" style="text-align: center">
+	<font face="华文中宋" size="6" color="#008000">
+	<a href="https://www.lanzous.com/i7s5sle" target="_blank" style="text-decoration: none">
+	<font color="#008000">微软常用运行库合集</font></a> |
+	<a href="https://www.lanzous.com/i7n6y0f" target="_blank" style="text-decoration: none">
+	<font color="#008000">CPU-Z</font></a> |
+	<a href="https://www.lanzous.com/i7n6xdc" target="_blank" style="text-decoration: none">
+	<font color="#008000">7-Zip</font></a> |
+	<a href="http://www.wepe.com.cn/download.html" target="_blank" style="text-decoration: none">
+	<font color="#008000">微PE(没有广告)</font></a></font><p class="MsoNormal" align="center" style="text-align: center">
+	<font face="华文中宋" size="6" color="#008000">
+	<a href="https://www.lanzous.com/i7sppza" target="_blank" style="text-decoration: none">
+	<font color="#008000">免格式化转NTFS</font></a> |
+	<a href="https://www.lanzous.com/i7spq2d" target="_blank" style="text-decoration: none">
+	<font color="#008000">Sublime</font></a> |
+	<a href="https://www.lanzous.com/i7spq7i" target="_blank" style="text-decoration: none">
+	<font color="#008000">Markdownpad2</font></a></font><p class="MsoNormal" align="center" style="text-align: center">
+	<font face="华文中宋" size="6" color="#008000">
+	<a href="https://www.lanzous.com/i7f8ccj" target="_blank" style="text-decoration: none">
+	<font color="#008000">Everything</font></a> |
+	<a href="https://www.lanzous.com/i7f8c8f" target="_blank" style="text-decoration: none">
+	<font color="#008000">注册表快捷操作</font></a> |
+	<a href="https://www.lanzous.com/i7f8oyd" target="_blank" style="text-decoration: none">
+	<font color="#008000">解除占用</font></a> |
+	<a href="https://www.lanzous.com/i7f8oti" target="_blank" style="text-decoration: none">
+	<font color="#008000">操作历史</font></a></font><p class="MsoNormal" align="center" style="text-align: center">
+	<font face="华文中宋" size="6">
+	<a href="https://www.lanzous.com/i7f8cah" target="_blank" style="text-decoration: none">
+	<font color="#008000">虚拟打印机</font></a><font color="#008000"> | </font>
+	<a href="https://www.lanzous.com/i7f8cbi" target="_blank" style="text-decoration: none">
+	<font color="#008000">Drcom破解版</font></a><font color="#008000"> | </font>
+	<a href="https://www.lanzous.com/i7f8oxc" target="_blank" style="text-decoration: none">
+	<font color="#008000">键盘修改器</font></a><font color="#008000"> | </font>
+	<a href="https://www.lanzous.com/i7f8tti" target="_blank" style="text-decoration: none">
+	<font color="#008000">PDF转Word</font></a></font><p class="MsoNormal" align="center" style="text-align: center">
+	<font face="华文中宋" size="6">
+	<a href="https://www.lanzous.com/i7f8cda" target="_blank" style="text-decoration: none">
+	<font color="#008000">MD5校验器</font></a><font color="#008000"> | </font>
+	<a href="https://www.lanzous.com/i7f8cgd" target="_blank" style="text-decoration: none">
+	<font color="#008000">屏幕亮度调节</font></a><font color="#008000"> | </font>
+	<a href="https://www.lanzous.com/i7f8p3i" target="_blank" style="text-decoration: none">
+	<font color="#008000">硬盘大师</font></a><font color="#008000"> | </font>
+	<a href="https://www.lanzous.com/i7f8osh" target="_blank" style="text-decoration: none">
+	<font color="#008000">禁用更新</font></a></font><p class="MsoNormal" align="center" style="text-align: center">
+	<font face="华文中宋" size="6">
+	<a href="https://www.lanzous.com/i7f8cfc" target="_blank" style="text-decoration: none">
+	<font color="#008000">农大新区图书馆自助打印驱动</font></a><font color="#008000"> |
+	</font>
+	<a href="https://www.lanzous.com/i7f8p2h" target="_blank" style="text-decoration: none">
+	<font color="#008000">显卡测试</font></a><font color="#008000"> |
+	<a href="https://www.lanzous.com/b0dpj40yb" target="_blank" style="text-decoration: none">
+	<font color="#008000">WinRAR</font></a></font></font><font face="华文中宋" size="6" color="#008000">(</font><span style="color: #008000; font-family: Arial, 微软雅黑, 宋体, 新宋体, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none; background-color: rgb(194, 236, 178)">7ggo</span><font face="华文中宋" size="6" color="#008000">)</font><p class="MsoNormal" align="center" style="text-align: center">
+	<font face="华文中宋" size="6">
+	<a href="https://www.lanzous.com/i7f8cjg" target="_blank" style="text-decoration: none">
+	<font color="#008000">文件夹加密</font></a><font color="#008000"> | </font>
+	<a href="https://www.lanzous.com/i7f8ckh" target="_blank" style="text-decoration: none">
+	<font color="#008000">ASCII转换工具</font></a><font color="#008000"> | </font>
+	<a href="https://www.lanzous.com/i7f8owb" target="_blank" style="text-decoration: none">
+	<font color="#008000">格式工厂</font></a><font color="#008000"> | </font>
+	<a href="https://www.lanzous.com/i7f8tva" target="_blank" style="text-decoration: none">
+	<font color="#008000">电脑扫码</font></a></font><p class="MsoNormal" align="center" style="text-align: center">
+	<font face="华文中宋" size="6">
+	<a href="https://www.lanzous.com/i7f8e5e" target="_blank" style="text-decoration: none">
+	<font color="#008000">IP 
+	Scanner</font></a><font color="#008000"> | </font> 
+	<a href="https://www.lanzous.com/i7f8eod" target="_blank" style="text-decoration: none">
+	<font color="#008000">Quicktime</font></a><font color="#008000"> | </font>
+	<a href="https://www.lanzous.com/i7f8ouj" target="_blank" style="text-decoration: none">
+	<font color="#008000">已保存的WIFI</font></a></font><p class="MsoNormal" align="center" style="text-align: center">
+	<font face="华文中宋" size="6">
+	<a href="https://www.lanzous.com/i7f8e7g" target="_blank" style="text-decoration: none">
+	<font color="#008000">X控-PC</font></a><font color="#008000"> | </font>
+	<a href="https://www.lanzous.com/i7f8e8h" target="_blank" style="text-decoration: none">
+	<font color="#008000">Android</font></a><font color="#008000"> | </font>
+	<a href="https://www.lanzous.com/i7f8ola" target="_blank" style="text-decoration: none">
+	<font color="#008000">DG绿色版</font></a><font color="#008000"> | </font>
+	<a href="https://www.lanzous.com/i7f8oih" target="_blank" style="text-decoration: none">
+	<font color="#008000">Chipgenius</font></a></font><p class="MsoNormal" align="center" style="text-align: center">
+	<font face="华文中宋" size="6">
+	<a href="https://www.lanzous.com/i7f8edc" target="_blank" style="text-decoration: none">
+	<font color="#008000">腾讯视频</font></a><font color="#008000"> | </font>
+	<a href="https://www.lanzous.com/i7f8egf" target="_blank" style="text-decoration: none">
+	<font color="#008000">优酷</font></a><font color="#008000"> | </font>
+	<a href="https://www.lanzous.com/i7f8eji" target="_blank" style="text-decoration: none">
+	<font color="#008000">爱奇艺</font></a><font color="#008000"> | </font>
+	<a href="https://www.lanzous.com/i7f8sha" target="_blank" style="text-decoration: none">
+	<font color="#008000">鼠标连点</font></a></font><p class="MsoNormal" align="center" style="text-align: center">
+	<font face="华文中宋" size="6">
+	<a href="https://www.lanzous.com/i7f8eti" target="_blank" style="text-decoration: none">
+	<font color="#008000">视频EXE加密</font></a><font color="#008000"> | </font>
+	<a href="https://www.lanzous.com/i7f8euj" target="_blank" style="text-decoration: none">
+	<font color="#008000">文件时间修改</font></a><font color="#008000">&nbsp;| 
+	<a href="https://www.lanzous.com/b0dpjbs5c" target="_blank" style="text-decoration: none">
+	<font color="#008000">U盘加密工具</font></a></font></font><font face="华文中宋" size="6" color="#008000">(</font><span style="color: #008000; font-family: Arial, 微软雅黑, 宋体, 新宋体, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none; background-color: rgb(208, 242, 195)">3nhj</span><font face="华文中宋" size="6" color="#008000">)</font><p class="MsoNormal" align="center" style="text-align: center">
+	<font face="华文中宋" size="6" color="#008000">
+	<a href="https://www.lanzous.com/i7izorg" target="_blank" style="text-decoration: none">
+	<font color="#008000">压缩包密码破译</font></a> | 
+	<a href="https://www.lanzous.com/i7izoqf" target="_blank" style="text-decoration: none">
+	<font color="#008000">Windows开机密码查看</font></a></font><p class="MsoNormal" align="center" style="text-align: center">
+	<font face="华文中宋" size="6" color="#008000">&nbsp;<a href="https://www.lanzous.com/i7sprsf" target="_blank" style="text-decoration: none"><font color="#008000">Disk 
+	Pulse Ultimate</font></a> |
+	<a href="http://renxufeng.ys168.com/" target="_blank" style="text-decoration: none">
+	<font color="#008000">GBT小组游戏空间</font></a></font><p class="MsoNormal" align="center" style="text-align: center">
+	&nbsp;</div>
+<blockquote>
+	<p align="center"><font face="华文中宋"><font color="#000000">
+	<a href="http://www.diannao120.top/blog/2019/11/15/191115liao01/" target="_blank" style="text-decoration: none">
+	<font color="#000000">使用方法</font></a></font><a TITLE="电脑120服务群② 群号：181626714" href="http://shang.qq.com/wpa/qunwpa?idkey=e42f5389280d1b46ff70e7e75058e0c202922891e7ecaafc30a4110a9869055f" target="_blank" rel="noopener noreferrer" target="_blank" style="text-decoration: none"><font color="#000000">&nbsp;&nbsp;&nbsp; </font></a>
+	&nbsp;<a TITLE="电脑120服务群① 群号：322935908" href="http://shang.qq.com/wpa/qunwpa?idkey=6ba6d55616eaad2ba859efff4d9ffa2c7a73afe936f790a24b7a9bc9ccb74960" target="_blank" rel="noopener noreferrer" target="_blank" style="text-decoration: none"><font color="#000000">①群</font></a>
+	<span> | </span>
+	<a TITLE="电脑120服务群② 群号：181626714" href="http://shang.qq.com/wpa/qunwpa?idkey=e42f5389280d1b46ff70e7e75058e0c202922891e7ecaafc30a4110a9869055f" target="_blank" rel="noopener noreferrer" target="_blank" style="text-decoration: none">
+	<font color="#000000">②群&nbsp;&nbsp;&nbsp; </font></a>
+	<a href="http://www.diannao120.top/blog/about/" target="_blank" style="text-decoration: none">
+	<font color="#000000">关于我们</font></a></font></p>
+</blockquote>
+<p align="center"><font face="华文中宋">Copyright © 2019 电脑120 版权所有</font></p>
+
+<script type="text/javascript">
+    /* 控制下雪 */
+    function snowFall(snow) {
+        /* 可配置属性 */
+        snow = snow || {};
+        this.maxFlake = snow.maxFlake || 200;   /* 最多片数 */
+        this.flakeSize = snow.flakeSize || 10;  /* 雪花形状 */
+        this.fallSpeed = snow.fallSpeed || 1;   /* 坠落速度 */
+    }
+    /* 兼容写法 */
+    requestAnimationFrame = window.requestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        function(callback) { setTimeout(callback, 1000 / 60); };
+ 
+    cancelAnimationFrame = window.cancelAnimationFrame ||
+        window.mozCancelAnimationFrame ||
+        window.webkitCancelAnimationFrame ||
+        window.msCancelAnimationFrame ||
+        window.oCancelAnimationFrame;
+    /* 开始下雪 */
+    snowFall.prototype.start = function(){
+        /* 创建画布 */
+        snowCanvas.apply(this);
+        /* 创建雪花形状 */
+        createFlakes.apply(this);
+        /* 画雪 */
+        drawSnow.apply(this)
+    }
+    /* 创建画布 */
+    function snowCanvas() {
+        /* 添加Dom结点 */
+        var snowcanvas = document.createElement("canvas");
+        snowcanvas.id = "snowfall";
+        snowcanvas.width = window.innerWidth;
+        snowcanvas.height = document.body.clientHeight;
+        snowcanvas.setAttribute("style", "position:absolute; top: 0; left: 0; z-index: 1; pointer-events: none;");
+        document.getElementsByTagName("body")[0].appendChild(snowcanvas);
+        this.canvas = snowcanvas;
+        this.ctx = snowcanvas.getContext("2d");
+        /* 窗口大小改变的处理 */
+        window.onresize = function() {
+            snowcanvas.width = window.innerWidth;
+            /* snowcanvas.height = window.innerHeight */
+        }
+    }
+    /* 雪运动对象 */
+    function flakeMove(canvasWidth, canvasHeight, flakeSize, fallSpeed) {
+        this.x = Math.floor(Math.random() * canvasWidth);   /* x坐标 */
+        this.y = Math.floor(Math.random() * canvasHeight);  /* y坐标 */
+        this.size = Math.random() * flakeSize + 2;          /* 形状 */
+        this.maxSize = flakeSize;                           /* 最大形状 */
+        this.speed = Math.random() * 1 + fallSpeed;         /* 坠落速度 */
+        this.fallSpeed = fallSpeed;                         /* 坠落速度 */
+        this.velY = this.speed;                             /* Y方向速度 */
+        this.velX = 0;                                      /* X方向速度 */
+        this.stepSize = Math.random() / 30;                 /* 步长 */
+        this.step = 0                                       /* 步数 */
+    }
+    flakeMove.prototype.update = function() {
+        var x = this.x,
+            y = this.y;
+        /* 左右摆动(余弦) */
+        this.velX *= 0.98;
+        if (this.velY <= this.speed) {
+            this.velY = this.speed
+        }
+        this.velX += Math.cos(this.step += .05) * this.stepSize;
+ 
+        this.y += this.velY;
+        this.x += this.velX;
+        /* 飞出边界的处理 */
+        if (this.x >= canvas.width || this.x <= 0 || this.y >= canvas.height || this.y <= 0) {
+            this.reset(canvas.width, canvas.height)
+        }
+    };
+    /* 飞出边界-放置最顶端继续坠落 */
+    flakeMove.prototype.reset = function(width, height) {
+        this.x = Math.floor(Math.random() * width);
+        this.y = 0;
+        this.size = Math.random() * this.maxSize + 2;
+        this.speed = Math.random() * 1 + this.fallSpeed;
+        this.velY = this.speed;
+        this.velX = 0;
+    };
+    // 渲染雪花-随机形状（此处可修改雪花颜色！！！）
+    flakeMove.prototype.render = function(ctx) {
+        var snowFlake = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
+        snowFlake.addColorStop(0, "rgba(255, 255, 255, 0.9)");  /* 此处是雪花颜色，默认是白色 */
+        snowFlake.addColorStop(.5, "rgba(255, 255, 255, 0.5)"); /* 若要改为其他颜色，请自行查 */
+        snowFlake.addColorStop(1, "rgba(255, 255, 255, 0)");    /* 找16进制的RGB 颜色代码。 */
+        ctx.save();
+        ctx.fillStyle = snowFlake;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+    };
+    /* 创建雪花-定义形状 */
+    function createFlakes() {
+        var maxFlake = this.maxFlake,
+            flakes = this.flakes = [],
+            canvas = this.canvas;
+        for (var i = 0; i < maxFlake; i++) {
+            flakes.push(new flakeMove(canvas.width, canvas.height, this.flakeSize, this.fallSpeed))
+        }
+    }
+    /* 画雪 */
+    function drawSnow() {
+        var maxFlake = this.maxFlake,
+            flakes = this.flakes;
+        ctx = this.ctx, canvas = this.canvas, that = this;
+        /* 清空雪花 */
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (var e = 0; e < maxFlake; e++) {
+            flakes[e].update();
+            flakes[e].render(ctx);
+        }
+        /*  一帧一帧的画 */
+        this.loop = requestAnimationFrame(function() {
+            drawSnow.apply(that);
+        });
+    }
+    /* 调用及控制方法 */
+    var snow = new snowFall({maxFlake:500});
+    snow.start();
+</script>
+
+</body>
+
+</html>
